@@ -1,0 +1,15 @@
+/*Kleine zusatz Klassen*/
+
+/*Element für Screenreader*/
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/*Schnelle Abstände(mt= margin-top, mb= margin-bottom*/
+.mt-1 { margin-top: var(--space-1);}
+.mt-2 { margin-top: var(--space-2);}
+.mb-1 { margin-bottom: var(--space-1);}
+.mb-2 { margin-bottom: var(--space-2);}
