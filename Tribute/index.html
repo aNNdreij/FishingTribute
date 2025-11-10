@@ -1,0 +1,151 @@
+<!doctype html> <!-- HTML5 für Moderne Features-->
+<html lang="de"> <!--Seiten sprache deutsch-->
+    <head>
+        <meta charset="utf-8"> <!--Für Sonderzeichen-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Breaking the Surface</title>
+        <!--CSS verlinkung-->
+        <link rel="stylesheet" href="styles/base.css">
+        <link rel="stylesheet" href="styles/layout.css">
+        <link rel="stylesheet" href="styles/components.css">
+        <link rel="stylesheet" href="styles/utilities.css">
+        <!--Java verlinkung-->
+        <script defer src="script.js"></script> 
+    </head>
+    <body>
+        <header>
+            <div class="container bar">
+            <div class="site-title">Breaking the Surface</div>
+            <nav class="primary">
+                <a href="#home">Start</a>
+                <a href="#about">Über mich</a>
+                <a href="#gear">Ausrüstung</a>
+                <a href="#gallery">Momente</a>
+                <a href="#techniques">Techniken & Tipps</a>
+                <a href="#contact">Kontakt</a>
+            </nav>
+            </div>
+        </header>
+
+        <main class="container">
+            <section id="home" class="hero"> <!--Start Bereich mit dem grossen Hintergrund-->
+                <div class="hero-bg">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://cdn.coverr.co/videos/coverr-ocean-waves-3953/1080p.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="hero-content">
+                    <h1>Leidenschaft des Fischens</h1>
+                    <p>Fischen ist für mich mehr als ein Hobby- es ist Verbindung zur Natur.</p>
+                    <a href="#about" class="btn">Mehr erfahren</a>
+                </div>
+            </section>
+
+            <section id="about">
+                <div class="about-grid">
+                    <figure class="about-media">
+                        <img src="media/meer-placeholder.jpg" alt="Bild woni no dri mach">
+                        <figcaption class="text-muted">Meer ist mein zweites Zuhause.</figcaption>
+                        </figure>
+
+                        <div class="about-text">
+                            <h2>Über mich</h2>
+                            <p>Ich angle leidenschaftlich in Salz und Süsswasser. Ruhe, Technik und die Nähe zur Natur sind für mich der perfekte Mix</p>
+
+                            <ul class="about-facts">
+                                <li>Lieblingsgewässer: Mittelmeer & Rhein</li>
+                                <li>Techniken: Spinnfischen, Jiggen, Topwater</li>
+                                <li>Haltung: Catch & Release, Respekt für Natur und Ökosystem</li>
+                            </ul>
+
+                            <a href="#gear" class="btn mt-2">Zu meiner Ausrüstung</a>
+                        </div>
+                    </div>
+                </div>
+                </section>
+            
+                <section id="gear">
+                    <h2>Meine Ausrüstung</h2>
+                        <p class="text-muted">Ein Blick in meine Lieblings-Setups - vom Süsswasser bis zum Meer.</p>
+                    
+                <div class="gear-grid">
+                        <!--Setup 1 -->
+                        <article class="gear-card">
+                            <img src="media/rute-placeholder.jpg" alt="Rute – Beispiel">
+                                <div class="gear-info">
+                                    <h3>Megabass Levante – Shimano Twinpower FE 3000</h3>
+                                    <p>Leichte Spinnrute, ideal für allround.</p>
+                                 </div>
+                        </article>
+
+                        <!--Setup 2 -->
+                        <article class="gear-card">
+                            <img src="media/rolle-placeholder.jpg" alt="Rolle – Beispiel">
+                                <div class="gear-info">
+                                    <h3>Zenaq Muthos– Shimano Stradic SW B 6000HG</h3>
+                                    <p>Feinlaufend, leicht, perfekt ausbalanciert fürs Heavy Spinnfischen.</p>
+                                </div>
+                        </article>
+
+                        <!--Setup 3 -->
+                        <article class="gear-card">
+                            <img src="media/rolle2-placeholder.jpg" alt="Rolle – Beispiel 2">
+                                <div class="gear-info">
+                                    <h3>Megabass Valkyrie– Curado DC 201 XG</h3>
+                                    <p>Digitale Bremse – präzise Würfe, auch bei Wind.</p>
+                                </div>
+                        </article>
+                </div>
+            </section>
+
+            <section id="gallery">
+                <h2>Videos/Bilder vom Fischen</h2>
+                <p class="text-muted">Klick auf das Bild, um es zu vergrössern.</p>
+                
+                <!--Raster für die Vorschaubilder-->
+                <div class="gallery-grid">
+                    
+                    <!--Rasterbilder-->
+                    <a href="media/sea-1-full.jpg" class="gallery-item" data-caption="Sonnenaufgang am Spot">
+                        <img src="media/sea-1-thumb.jpg" alt="Sonnenaufgang am Meer">
+                    </a>
+
+                    <a href="media/sea-2-full.jpg" class="gallery-item" data-caption="Wurf ins Blau">
+                        <img src="media/sea-2-thumb.jpg" alt="Köderwurf ins Blau">
+                    </a>
+
+                    <a href="media/sea-3-full.jpg" class="gallery-item" data-caption="Ruhige See, klare Luft">
+                        <img src="media/sea-3-thumb.jpg" alt="Ruhiges Meer">
+                    </a>
+                    <!--Bei neuen Bildern einfach gleich einfügen-->
+                </div>
+
+                <!--Lightbox Overlay (einblendung mit JS)-->
+                <div class="lightbox" aria-hidden="true" role="dialog">
+                    <div class="lightbox-backdrop"></div> <!--Klick auf den schwarzen Hintergrund schliesst die Lightbox-->
+
+                    <!--Der Rahmen mit Bild-->
+                    <figure class="lightbox-content" role="document" aria-label="Grossansicht">
+                        <button class="lightbox-close" aria-label="Schliessen">x</button>
+                        <img class="lightbox-image" src="" alt="">
+                        <figcaption class="lightbox-caption text-muted"></figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section id="techniques">
+                <h2>Technicken und Tipps</h2>
+                <p>Spinnfischen, Jiggen Topwater</p>
+            </section>
+
+            <section id="contact">
+                <h2>Kontakt</h2>
+                <p>Kontaktformular mit validierung und spam-schutz</p>
+            </section>
+        </main>
+        <footer>
+            <p>© 2025 My Fishing Tribute</p>
+        </footer>
+
+    </body>
+</html>

@@ -1,0 +1,110 @@
+/*Navigation und Buttons*/
+
+/*Menü Links auf der Linken seite und innenabstand der Klickfläche*/
+nav.primary a {
+    padding: 0.3rem 0.5rem;
+    position: relative; /*Für das pseudo element unten*/
+}
+
+/*Underline die sichtbar wird beim darüberfahren*/
+nav.primary a::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -3px; /*Linie unter dem Text*/
+    height: 2px;
+    background-color: var(--color-accent);
+    transform: scaleX(0); /*wird unsichtbar*/
+    transition: transform 0.2s;
+}
+nav.primary a:hover::after {
+    transform: scaleX(1); /*Linie wird beim Hovern wieder Sichtbar*/
+}
+
+/*Buttons*/
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1rem;
+    background-color: var(--color-accent);
+    color: white;
+    border-radius: 5px; /*leichte abrundung*/
+}
+.btn:hover { 
+    background-color: #59d;
+}
+
+/*Aktiver Menülink*/
+nav.primary a.active {
+    color: var(--color-accent);
+}
+nav.primary a.active::after {
+    transform: scaleX(1); /*So bleibt die unterschtreichung sichtbar*/
+}
+
+/*Lightbox- Vollbild Ansicht*/
+.lightbox {
+    position: fixed; /*Richtet sich immer nach dem Viewport*/
+    inset: 0; /*Top, Right, bottom und left sind 0*/
+    display: none; /*Unsichtbar bis JS es sichtbar macht*/
+    z-index: 200; /*Höhe der Lightbox also über dem Header und Inhalt*/
+}
+
+.lightbox.is-open {
+    display: block; /*Sichtbar wenn sie offen ist*/
+}
+
+/*Dunkler Hintergrund, ist klickbar um das bild zu schliessen*/
+.lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.65); 
+    backdrop-filter: blur(2px);
+}
+
+/*Rahmen mit Bild in der Mitte*/
+.lightbox-content {
+    position: absolute;
+    top: 50%; left: 50;
+    transform: translate(-50%, -50%); /*exakte zentrierung*/
+    max-width: min(92vw, 1200px);
+    max-height: 88vh;
+    background: var(--color-elev-1);
+    border-radius: var(--radius-1-);
+    box-shadow: var(--shadow-1);
+    padding: var(--space-2);
+}
+
+/*Die grosse Version Skaliert sauber in den Rahmen*/
+.lightbox-image {
+    max-width: 100%;
+    max-height: 70vh; /*Das es noch genug platz für die Caption und close Button hat*/
+    object-fit: contain; /*So passt es ohne abgeschnitten zu werden*/
+    display: block;
+    margin: 0 auto;
+}
+
+/*Caption*/
+.lightbox-caption {
+    margin-top: var(--space-1);
+    text-align: center;
+}
+
+/*Close BUtton, Oben rechts im Rahmen*/
+.lightbox-close {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    font-size: 1.4rem;
+    line-height: 1;
+    border: 0;
+    background: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+}
+.lightbox-close:hover,
+.lightbox.close:focus { color: var(--color-accent); }
+
+/*Responsiv rahmen für s Handy*/
+@media (max-width: 600px) {
+    .lightbox-content { max-width: 94vw; padding: var(--space-1); }
+    .lightbox-image { max-height: 62vh; }
+}

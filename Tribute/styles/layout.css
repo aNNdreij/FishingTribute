@@ -1,0 +1,234 @@
+/*Layout, Seitenraster, Header und Sektionen*/
+
+/*Zentrales Container pattern für maximale breite und aussenabstand*/
+.container {
+    max-width: var(--max-w);
+    margin-inline: auto;
+    padding-inline: var(--space-2);
+}
+
+/*Sticky Header (bleibt beim scrollen sichtbar)*/
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(6px);
+    background: rgba(11, 14, 18, 0.7); /*Transparenz für --color-bg*/
+    border-bottom:  1px solid var(--color-border);
+}
+header .bar {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-2) 0;
+}
+
+/* Titel ist Links und Navigation rechts*/
+.site-titel {
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing:  0.5px;
+}
+
+/*Hauptnavigation im Header */
+nav.primary {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+/*Sections Abstände*/
+main > section {
+    padding: var(--space-6) 0 var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+    scroll-margin-top: 80px; /*Macht das Ankerziel unter dem Sticky header sichtbar*/
+}
+
+/*Footer*/
+footer {
+    padding: var(--space-4) 0;
+    color: var(--color-muted);
+    border-top: 1px solid var(--color-border);
+
+}
+
+/*Hero-Bereich*/
+
+/*Damit der Hero Bereich fast den Ganzen screen nimt*/
+.hero {
+    position: relative; /*Damit der Text im Hintergrund übereinander sein kann*/
+    height: 90vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    overflow: hidden; /*Überschüssiges wird abgeschnitten*/
+    text-align: center;
+}
+
+/*Hintergrundebene*/
+.hero-bg {
+    position: absolute; /*liegt hinter dem Text*/
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/*Video*/
+.hero-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%);
+}
+
+/*Text und Button über dem Hintergrund*/
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 1rem;
+}
+
+/*Grosse Überschrift*/
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/*Untertitel vom Text*/
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #dbeafe;
+}
+
+/*Aktiver Menülink*/
+nav.primary a.active {
+    color: var(--color-accent);
+}
+nav.primary a.active::after {
+    transform: scaleX(1);
+}
+
+/*Mobile Anpassung*/
+@media (max-width: 600px) {
+    .hero {
+        height: 75vh;
+    }
+    .hero-content h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1.25rem;
+    }
+}
+
+/*About me 2 Spalten Layout*/
+.about-grid {
+    display: grid; /*Grid, Spalten-Layout*/
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--space-4);
+    align-items: center;
+    padding: var(--space-6) 0;
+}
+
+.about-media {
+    margin: 0;
+    background: var(--color-elev-1);
+    border-radius: var(--radius-1);
+    overflow: hidden;
+    box-shadow: var(--shadow-1);
+}
+
+.about-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-text h2 { margin-bottom: var(--space-2); }
+.about-text p { margin-bottom: var(--space-2); }
+
+.about-facts { 
+    margin: 0 0 var(--space-2);
+    padding-left: 1.1rem;
+}
+.about-facts li { margin-bottom: 0.5rem; }
+/*Responsiv: unter 900px auf 1 spalte wechseln*/
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*Ausrüstungs Raster*/
+.gear-grid {
+    display: grid;                         /* Raster-Layout aktivieren */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-4);                   /* Abstand zwischen Karten */
+    margin-top: var(--space-4);
+}
+
+.gear-card {
+    background: var(--color-elev-1);       /* leicht angehobener dunkler Hintergrund */
+    border-radius: var(--radius-1);        /* runde Ecken */
+    overflow: hidden;                      /* runde Ecken wirken auch fürs Bild */
+    box-shadow: var(--shadow-1);           /* dezenter Schatten */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gear-card:hover {
+    transform: translateY(-4px);           /* kleine Hover-Bewegung nach oben */
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.gear-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;                     /* Bild füllt Karte ohne Verzerrung */
+}
+
+.gear-info {
+    padding: var(--space-2);
+}
+
+.gear-info h3 {
+    margin-bottom: 0.5rem;
+    color: var(--color-accent);
+}
+
+.gear-info p {
+    font-size: var(--fs-300);
+    color: var(--color-muted);
+}
+
+/*Gallerie Raster für die Thumbnails*/
+.gallery-grid {
+    display: grid; /*gitter layout*/
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-3);
+}
+
+.gallery-item {
+    display: block;
+    background: var(--color-elev-1);
+    border-radius: var(--radius-1);
+    overflow: hidden;
+    box-shadow: var(--shadow-1);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.gallery-item:hover,
+.gallery-item:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+    outline: none;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 180px; /*fixe Thumbnail höhe*/
+    object-fit: cover; /*Füllt ohne verzerrung*/
+    display: block;
+}
